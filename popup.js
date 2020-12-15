@@ -2,14 +2,26 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     let template = '';
-    chrome.runtime.sendMessage("hello!", function (response) {
-        for (line in response) {
+    chrome.runtime.sendMessage("hello!", function ({patternObject,defaultOperator,errors}) {
+
+        // alert(JSON.stringify(errors))
+
+        template += `
+        <tr>
+        <td>${defaultOperator}r</td>
+        <td>null</td>
+        <td style="max-width: 20px;">null</td>
+        <td>*special* resets all parameters</td>
+        </tr>
+        
+        `
+        for (line in patternObject) {
             template += `
         <tr>
-        <td>${response[line].operator}</td>
-        <td>${response[line].query}</td>
-        <td>${response[line].param}</td>
-        <td>${response[line].info}</td>
+        <td>${defaultOperator}${patternObject[line].operator}</td>
+        <td>${patternObject[line].query}</td>
+        <td style="max-width: 20px;">${patternObject[line].param}</td>
+        <td>${patternObject[line].info}</td>
         </tr>
         
         `
