@@ -1,0 +1,22 @@
+
+
+{
+	"name": "Google Search Shortcuts for SEOs",
+	"version": "1.0",
+    "description": "For SEO professionals to quickly modify search queries",
+    "browser_action" : {
+        "default_icon" : "john.png",
+        "default_popup" :"popup.html"
+    },
+	"background": {
+		"scripts": ["main.js"],
+		"persistent": true
+	},
+    "manifest_version": 2,
+    "content_scripts":   [ {
+        "matches": ["*://*/search*"],
+        "css": ["style.css"],
+        "js": ["addSpaceSearch.js"]
+      }],
+	"permissions": ["webRequest","tabs", "webRequestBlocking", "*://*/search*","storage"]
+}
