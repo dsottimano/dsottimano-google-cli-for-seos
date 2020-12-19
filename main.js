@@ -24,11 +24,17 @@ let geoPatternRegex = new RegExp(`^\\${defaultOperator}g|\\B\\${defaultOperator}
 //add your new commands in this object
 let patternObject = [{
   operator: "s",
-  query: 'site:stackoverflow.com',
+  query: null,
   param: null,
-  info: "limits results to stackoverflow",
-  fn: null,
-  fnTakesInput: false
+  info: "compares safe search. domain required for input after operator ",
+  fn: function(q) {
+    this.query = "site:" + q;
+    this.param = "&safe=active"
+    chrome.tabs.create({'url': 'https://www.google.com/search?q='+ this.query + '&safe=images' }, function(tab) {
+      // opened tab, what to do, what to do...
+  });
+  } ,
+  fnTakesInput: true
 },
 {
   operator: "c",
