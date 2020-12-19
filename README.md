@@ -105,5 +105,26 @@ Function inputs are when use a command and the following string separated by a s
   fnTakesInput: true
 }
 ``` 
+## Q & A
+
+**Why isn't this on the extension marketplace?**
+
+Not sure how stable this is with heavy usage so, I don't want to put out a bad product.  If in a few weeks, everything hold up and Google doesn't break this, then I'll put up a nicer version with a GUI for config
+
+**Are you recording any of my data/keystrokes/etc?**
+
+No way. Please check the code or have someone review the code, there is nothing of that sort in the code and will never be.
+
+**Can you get blocked for using too many parameter searches?**
+
+Not blocked, but you'll get a captcha if you hit this too hard.  For example, I had to exceed 30 queries in a minute for Google to block me with a captcha (temporarily of course)
+
+**How does this work?**
+
+Chrome's APIs allow blocking of a request URL.  When you request Google's search, I check to see if you want to change that query with a shortcut.
+
+**After I change the parameters, they persist or the same parameters appear with the newest values, what's up?**
+
+No different to how normal search functions with param manipulation.  If the same parameter appears twice, the last wins.  You can always clear by using ;r
 
 
